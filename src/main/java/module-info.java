@@ -5,6 +5,7 @@ module com.example.graduation_project_desktop {
     requires com.google.gson;
 
 
-    opens com.example.graduation_project_desktop to javafx.fxml;
+    opens com.example.graduation_project_desktop to javafx.fxml, com.google.gson;
+
     exports com.example.graduation_project_desktop;
 }
