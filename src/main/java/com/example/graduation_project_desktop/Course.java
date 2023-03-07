@@ -6,21 +6,21 @@ public class Course {
 
     private int id;
     @Expose
-    private String course_Name;
+    private String name;
     @Expose
-    private String course_Description;
+    private String description;
     @Expose
-    private String cover_Photo;
+    private String cphoto;
     @Expose
     private String subject;
     @Expose
     private String topic;
 
-    public Course(int id, String courseName, String courseDescription, String coverPhoto, String subject, String topic) {
+    public Course(int id, String name, String description, String cphoto, String subject, String topic) {
         this.id = id;
-        this.course_Name = courseName;
-        this.course_Description = courseDescription;
-        this.cover_Photo = coverPhoto;
+        this.name = name;
+        this.description = description;
+        this.cphoto = cphoto;
         this.subject = subject;
         this.topic = topic;
     }
@@ -29,17 +29,15 @@ public class Course {
         return id;
     }
 
-    public String getCourseName() {
-        return course_Name;
+    public String getName() {
+        return name;
     }
 
-    public String getCourseDescription() {
-        return course_Description;
+    public String getDescription() {
+        return description;
     }
 
-    public String getCoverPhoto() {
-        return cover_Photo;
-    }
+    public String getCphoto() { return cphoto; }
 
     public String getSubject() {
         return subject;
@@ -53,17 +51,15 @@ public class Course {
         this.id = id;
     }
 
-    public void setCourseName(String courseName) {
-        this.course_Name = courseName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setCourseDescription(String courseDescription) {
-        this.course_Description = courseDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public void setCoverPhoto(String coverPhoto) {
-        this.cover_Photo = coverPhoto;
-    }
+    public void setCphoto(String cphoto) {this.cphoto = cphoto;}
 
     public void setSubject(String subject) {
         this.subject = subject;

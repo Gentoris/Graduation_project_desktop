@@ -39,9 +39,9 @@ public class CourseController extends Controller{
     @FXML
     private void initialize() {
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        nevCol.setCellValueFactory(new PropertyValueFactory<>("course_name"));
-        descCol.setCellValueFactory(new PropertyValueFactory<>("course_description"));
-        photoCol.setCellValueFactory(new PropertyValueFactory<>("cover_photo"));
+        nevCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        descCol.setCellValueFactory(new PropertyValueFactory<>("description"));
+        photoCol.setCellValueFactory(new PropertyValueFactory<>("cphoto"));
         subjectCol.setCellValueFactory(new PropertyValueFactory<>("subject"));
         topicCol.setCellValueFactory(new PropertyValueFactory<>("topic"));
         Platform.runLater(() -> {
@@ -100,7 +100,7 @@ public class CourseController extends Controller{
             Stage stage = new Stage();
             UpdateCoursesController controller = fxmlLoader.getController();
             controller.setCourse(SelectedCourse);
-            stage.setTitle("Update "+ SelectedCourse.getCourseName());
+            stage.setTitle("Update "+ SelectedCourse.getName());
             stage.setScene(scene);
             stage.setOnHidden(event -> {
                 try {
@@ -125,7 +125,7 @@ public class CourseController extends Controller{
         Optional<ButtonType> optionalButtonType =
                 alert(Alert.AlertType.CONFIRMATION, "Biztos?",
                         "Biztos, hogy törölni szeretné ezt a kurzust?: "
-                                + SelectedCourse.getCourseName() +  " description: " + SelectedCourse.getCourseDescription(),
+                                + SelectedCourse.getName() +  " description: " + SelectedCourse.getDescription(),
                         "");
         if (optionalButtonType.isPresent() &&
                 optionalButtonType.get().equals(ButtonType.OK)

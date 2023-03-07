@@ -24,9 +24,9 @@ public class UpdateCoursesController extends Controller{
 
     public void setCourse(Course course) {
         this.course = course;
-        this.nevInput.setText(course.getCourseName());
-        this.descInput.setText(course.getCourseDescription());
-        this.photoInput.setText(course.getCoverPhoto());
+        this.nevInput.setText(course.getName());
+        this.descInput.setText(course.getDescription());
+        this.photoInput.setText(course.getCphoto());
         this.subjectInput.setText(course.getSubject());
         this.topicInput.setText(course.getTopic());
 
@@ -37,13 +37,13 @@ public class UpdateCoursesController extends Controller{
     private void UpdateClick(ActionEvent actionEvent) {
         String nev = this.nevInput.getText();
         String description = this.descInput.getText();
-        String photo = this.photoInput.getText();
+        String cphoto = this.photoInput.getText();
         String tant = this.subjectInput.getText();
         String tema = this.topicInput.getText();
 
-        this.course.setCourseName(nev);
-        this.course.setCourseDescription(description);
-        this.course.setCoverPhoto(photo);
+        this.course.setName(nev);
+        this.course.setDescription(description);
+        this.course.setCphoto(cphoto);
         this.course.setSubject(tant);
         this.course.setTopic(tema);
         Gson gson = new Gson();
