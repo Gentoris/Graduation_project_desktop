@@ -8,12 +8,16 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class App extends Application {
-    public static final String BASE_URL = "http://localhost:3000/courses";
+    public static final String Course_URL = "http://localhost:3000/course/list";
+    public static final String User_URL = "http://localhost:3000/user/list";
+    public static final String Insert_Course_URL = "http://localhost:3000/course/create";
+    public static final String Insert_User_URL = "http://localhost:3000/user/create";
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
-        stage.setTitle("Kurzusok");
+        stage.setTitle("App");
         stage.setScene(scene);
         stage.show();
     }

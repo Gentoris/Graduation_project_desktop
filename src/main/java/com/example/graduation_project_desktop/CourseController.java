@@ -24,6 +24,16 @@ public class CourseController extends Controller{
     @FXML
     private TableView<Course> courseTable;
     @FXML
+    private TableView<Course> userTable;
+    @FXML
+    private TableColumn<Course, String> nameCol;
+    @FXML
+    private TableColumn<Course, String> pwCol;
+    @FXML
+    private TableColumn<Course, String> emailCol;
+    @FXML
+    private TableColumn<Course, String> pictureCol;
+    @FXML
     private TableColumn<Course, Integer> idCol;
     @FXML
     private TableColumn<Course, String> nevCol;
@@ -44,9 +54,21 @@ public class CourseController extends Controller{
         photoCol.setCellValueFactory(new PropertyValueFactory<>("cphoto"));
         subjectCol.setCellValueFactory(new PropertyValueFactory<>("subject"));
         topicCol.setCellValueFactory(new PropertyValueFactory<>("topic"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("username"));
+        pwCol.setCellValueFactory(new PropertyValueFactory<>("password"));
+        emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
+        pictureCol.setCellValueFactory(new PropertyValueFactory<>("profile_pic"));
+
         Platform.runLater(() -> {
             try {
                 loadCoursesFromServer();
+            } catch (IOException e) {
+                error("Hiba történt az adatok lekérése során", e.getMessage());
+
+                Platform.exit();
+            }
+            try {
+                loadUsersFromServer();
             } catch (IOException e) {
                 error("Hiba történt az adatok lekérése során", e.getMessage());
 
@@ -56,7 +78,7 @@ public class CourseController extends Controller{
     }
 
     private void loadCoursesFromServer() throws IOException {
-        Response response = RequestHandler.get(App.BASE_URL);
+        Response response = RequestHandler.get(App.Course_URL);
         String content = response.getContent();
         Gson converter = new Gson();
         Course[] course_db = converter.fromJson(content, Course[].class);
@@ -66,8 +88,19 @@ public class CourseController extends Controller{
         }
     }
 
+    private void loadUsersFromServer() throws IOException {
+        Response response = RequestHandler.get(App.User_URL);
+        String content = response.getContent();
+        Gson converter = new Gson();
+        Course[] course_db = converter.fromJson(content, Course[].class);
+        userTable.getItems().clear();
+        for (Course course : course_db) {
+            userTable.getItems().add(course);
+        }
+    }
+
     @FXML
-    public void insertClick(ActionEvent actionEvent) {
+    public void insertCourseClick(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("insert-courses-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 640, 480);
@@ -88,7 +121,7 @@ public class CourseController extends Controller{
     }
 
     @FXML
-    public void updateClick(ActionEvent actionEvent) {
+    public void updateCourseClick(ActionEvent actionEvent) {
         Course SelectedCourse =  courseTable.getSelectionModel().getSelectedItem();
         if (SelectedCourse == null) {
             warning("Törléshez előbb válasszon ki egy elemet!");
@@ -116,7 +149,7 @@ public class CourseController extends Controller{
     }
 
     @FXML
-    public void deleteClick(ActionEvent actionEvent) {
+    public void deleteCourseClick(ActionEvent actionEvent) {
         Course SelectedCourse =  courseTable.getSelectionModel().getSelectedItem();
         if (SelectedCourse == null) {
             warning("A törléshez előbb válasszon ki egy elemet!");
@@ -125,12 +158,12 @@ public class CourseController extends Controller{
         Optional<ButtonType> optionalButtonType =
                 alert(Alert.AlertType.CONFIRMATION, "Biztos?",
                         "Biztos, hogy törölni szeretné ezt a kurzust?: "
-                                + SelectedCourse.getName() +  " description: " + SelectedCourse.getDescription(),
+                                + SelectedCourse.getName(),
                         "");
         if (optionalButtonType.isPresent() &&
                 optionalButtonType.get().equals(ButtonType.OK)
         ) {
-            String url = App.BASE_URL + "/" + SelectedCourse.getId();
+            String url = App.Course_URL + "/" + SelectedCourse.getId();
             try {
                 RequestHandler.delete(url);
                 loadCoursesFromServer();
@@ -139,5 +172,7 @@ public class CourseController extends Controller{
             }
         }
     }
+
+
 }
 

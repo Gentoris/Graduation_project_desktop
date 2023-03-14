@@ -7,6 +7,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.Scene?>
 <VBox prefHeight="600.0" prefWidth="800.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.graduation_project_desktop.CourseController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -14,11 +17,16 @@
     <children>
         <HBox spacing="20.0">
             <children>
-                <Button fx:id="insertButton" mnemonicParsing="false" onAction="#insertClick" text="Insert" />
-                <Button fx:id="updateButton" mnemonicParsing="false" onAction="#updateClick" text="Update" />
-                <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteClick" text="Delete" />
+                <Button fx:id="insertButton" mnemonicParsing="false" onAction="#insertCourseClick" text="Insert" />
+                <Button fx:id="updateButton" mnemonicParsing="false" onAction="#updateCourseClick" text="Update" />
+                <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteCourseClick" text="Delete" />
             </children>
         </HBox>
+        <VBox xmlns:fx="http://javafx.com/fxml">
+            <children>
+                <Label text="Kurzusok"/>
+            </children>
+        </VBox>
         <TableView fx:id="courseTable" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
             <columns>
                 <TableColumn fx:id="idCol" minWidth="50.0" prefWidth="75.0" text="#" />
@@ -27,6 +35,21 @@
                 <TableColumn fx:id="photoCol" minWidth="50.0" prefWidth="110.0" text="Kép" />
                 <TableColumn fx:id="subjectCol" minWidth="40.0" prefWidth="78.0" text="Tantárgya" />
                 <TableColumn fx:id="topicCol" minWidth="40.0" prefWidth="78.0" text="Témája" />
+
+            </columns>
+        </TableView>
+        <VBox xmlns:fx="http://javafx.com/fxml">
+            <children>
+                <Label text="Felhasználók"/>
+            </children>
+        </VBox>
+        <TableView fx:id="userTable" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="useridCol" minWidth="50.0" prefWidth="75.0" text="#" />
+                <TableColumn fx:id="nameCol" minWidth="50.0" prefWidth="138.0" text="Neve" />
+                <TableColumn fx:id="pwCol" minWidth="50.0" prefWidth="262.0" text="Jelszava" />
+                <TableColumn fx:id="emailCol" minWidth="50.0" prefWidth="110.0" text="ProfilKép" />
+                <TableColumn fx:id="pictureCol" minWidth="40.0" prefWidth="78.0" text="Kezdés" />
             </columns>
         </TableView>
     </children>

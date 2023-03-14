@@ -9,11 +9,11 @@ import java.io.IOException;
 
 public class UpdateCoursesController extends Controller{
     @FXML
-    private TextField nevInput;
+    private TextField nameInput;
     @FXML
-    private TextField descInput;
+    private TextField descriptionInput;
     @FXML
-    private TextField photoInput;
+    private TextField cphotoInput;
     @FXML
     private TextField subjectInput;
     @FXML
@@ -24,9 +24,9 @@ public class UpdateCoursesController extends Controller{
 
     public void setCourse(Course course) {
         this.course = course;
-        this.nevInput.setText(course.getName());
-        this.descInput.setText(course.getDescription());
-        this.photoInput.setText(course.getCphoto());
+        this.nameInput.setText(course.getName());
+        this.descriptionInput.setText(course.getDescription());
+        this.cphotoInput.setText(course.getCphoto());
         this.subjectInput.setText(course.getSubject());
         this.topicInput.setText(course.getTopic());
 
@@ -35,13 +35,13 @@ public class UpdateCoursesController extends Controller{
 
     @FXML
     private void UpdateClick(ActionEvent actionEvent) {
-        String nev = this.nevInput.getText();
-        String description = this.descInput.getText();
-        String cphoto = this.photoInput.getText();
+        String name = this.nameInput.getText();
+        String description = this.descriptionInput.getText();
+        String cphoto = this.cphotoInput.getText();
         String tant = this.subjectInput.getText();
         String tema = this.topicInput.getText();
 
-        this.course.setName(nev);
+        this.course.setName(name);
         this.course.setDescription(description);
         this.course.setCphoto(cphoto);
         this.course.setSubject(tant);
@@ -49,7 +49,7 @@ public class UpdateCoursesController extends Controller{
         Gson gson = new Gson();
         String json = gson.toJson(this.course);
         try {
-            String url = App.BASE_URL + "/" + this.course.getId();
+            String url = App.Course_URL + "/" + this.course.getId();
             Response response = RequestHandler.put(url, json);
             if(response.getResponseCode() == 200) {
                 Stage stage = (Stage) this.updateButton.getScene().getWindow();

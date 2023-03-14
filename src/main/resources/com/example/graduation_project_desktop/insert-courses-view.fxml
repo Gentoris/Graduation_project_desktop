@@ -19,7 +19,7 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <TextField fx:id="nevInput" maxWidth="300.0" prefWidth="100.0" />
+                <TextField fx:id="nameInput" maxWidth="300.0" prefWidth="100.0" />
             </children>
             <VBox.margin>
                 <Insets top="30.0" />
@@ -35,7 +35,7 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <TextField fx:id="descInput" maxWidth="300.0" prefWidth="100.0" />
+                <TextField fx:id="descriptionInput" maxWidth="300.0" prefWidth="100.0" />
             </children>
             <VBox.margin>
                 <Insets top="30.0" />
@@ -51,7 +51,7 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <TextField fx:id="photoInput" maxWidth="300.0" prefWidth="100.0" />
+                <TextField fx:id="cphotoInput" maxWidth="300.0" prefWidth="100.0" />
             </children>
             <VBox.margin>
                 <Insets top="30.0" />
@@ -91,7 +91,7 @@
         </VBox>
         <VBox alignment="TOP_CENTER">
             <children>
-                <Button fx:id="insertButton" mnemonicParsing="false" onAction="#InsertClick" prefWidth="250.0" text="Hozzáadás" />
+                <Button fx:id="insertCourseButton" mnemonicParsing="false" onAction="#InsertCourseClick" prefWidth="250.0" text="Hozzáadás" />
             </children>
             <VBox.margin>
                 <Insets bottom="20.0" top="40.0" />

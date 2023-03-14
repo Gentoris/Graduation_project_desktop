@@ -10,27 +10,30 @@ import java.io.IOException;
 
 public class InsertCoursesController extends Controller{
     @javafx.fxml.FXML
-    private TextField nevInput;
+    private TextField nameInput;
     @javafx.fxml.FXML
-    private TextField descInput;
+    private TextField descriptionInput;
     @javafx.fxml.FXML
-    private TextField photoInput;
+    private TextField cphotoInput;
     @javafx.fxml.FXML
     private TextField subjectInput;
     @javafx.fxml.FXML
     private TextField topicInput;
+    @javafx.fxml.FXML
+    private TextField dlInput;
 
     @FXML
     private Button insertButton;
 
-    @javafx.fxml.FXML
-    public void InsertClick(ActionEvent actionEvent) {
-        String nev = this.nevInput.getText();
-        String description = this.descInput.getText();
-        String photo = this.photoInput.getText();
+    @FXML
+    public void InsertCourseClick(ActionEvent actionEvent) {
+        String name = this.nameInput.getText();
+        String description = this.descriptionInput.getText();
+        String cphoto = this.cphotoInput.getText();
         String subject = this.subjectInput.getText();
         String topic = this.topicInput.getText();
-        if (nev.isEmpty()) {
+
+        if (name.isEmpty()) {
             warning("Név megadása kötelező");
             return;
         }
@@ -38,7 +41,7 @@ public class InsertCoursesController extends Controller{
             warning("Leírás megadása kötelező");
             return;
         }
-        if (photo.isEmpty()) {
+        if (cphoto.isEmpty()) {
             warning("Fotó link megadása kötelező");
             return;
         }
@@ -50,15 +53,15 @@ public class InsertCoursesController extends Controller{
             warning("Témakör megadása kötelező");
             return;
         }
-        Course course = new Course(0, nev, description, photo, subject, topic);
+        Course course = new Course(0, name, description, cphoto, subject, topic);
         Gson gson = new Gson();
         String json = gson.toJson(course);
         try {
-            Response response = RequestHandler.post(App.BASE_URL, json);
+            Response response = RequestHandler.post(App.Insert_Course_URL, json);
             if(response.getResponseCode() == 201) {
-                nevInput.setText("");
-                descInput.setText("");
-                photoInput.setText("");
+                nameInput.setText("");
+                descriptionInput.setText("");
+                cphotoInput.setText("");
                 subjectInput.setText("");
                 topicInput.setText("");
             }else{
@@ -67,6 +70,5 @@ public class InsertCoursesController extends Controller{
         } catch (IOException e) {
             error("Nem sikerült a szerverhez csatlakozni");
         }
-
     }
 }
