@@ -16,14 +16,6 @@ public class Course {
     @Expose
     private String topic;
 
-    @Expose
-    private String username;
-    @Expose
-    private String password;
-    @Expose
-    private String email;
-    @Expose
-    private String profile_pic;
 
 
     public Course(int id, String name, String description, String cphoto, String subject, String topic) {
@@ -33,10 +25,6 @@ public class Course {
         this.cphoto = cphoto;
         this.subject = subject;
         this.topic = topic;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.profile_pic = profile_pic;
     }
 
     public int getId() {
@@ -83,41 +71,6 @@ public class Course {
         this.topic = topic;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getProfile_pic() {
-        return profile_pic;
-    }
-
-    public void setUserId(int id) {
-        this.id = id;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setProfile_pic(String profile_pic) {
-        this.profile_pic = profile_pic;
-    }
 }
 
 

@@ -24,7 +24,7 @@ public class CourseController extends Controller{
     @FXML
     private TableView<Course> courseTable;
     @FXML
-    private TableView<Course> userTable;
+    private TableView<User> userTable;
     @FXML
     private TableColumn<Course, String> nameCol;
     @FXML
@@ -45,6 +45,20 @@ public class CourseController extends Controller{
     private TableColumn<Course, String> subjectCol;
     @FXML
     private TableColumn<Course, String> topicCol;
+    @FXML
+    private Button InsertUserButton;
+    @FXML
+    private Button deleteUserButton;
+    @FXML
+    private Button updateUserButton;
+    @FXML
+    private Tab CourseTabPage;
+    @FXML
+    private Tab UserTabPage;
+    @FXML
+    private TableColumn useridCol;
+    @FXML
+    private TabPane tabPane;
 
     @FXML
     private void initialize() {
@@ -59,8 +73,10 @@ public class CourseController extends Controller{
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
         pictureCol.setCellValueFactory(new PropertyValueFactory<>("profile_pic"));
 
+
         Platform.runLater(() -> {
             try {
+                System.out.println("Kurzus adatok betöltése");
                 loadCoursesFromServer();
             } catch (IOException e) {
                 error("Hiba történt az adatok lekérése során", e.getMessage());
@@ -92,10 +108,10 @@ public class CourseController extends Controller{
         Response response = RequestHandler.get(App.User_URL);
         String content = response.getContent();
         Gson converter = new Gson();
-        Course[] course_db = converter.fromJson(content, Course[].class);
+        User[] course_db = converter.fromJson(content, User[].class);
         userTable.getItems().clear();
-        for (Course course : course_db) {
-            userTable.getItems().add(course);
+        for (User user : course_db) {
+            userTable.getItems().add(user);
         }
     }
 
@@ -124,7 +140,7 @@ public class CourseController extends Controller{
     public void updateCourseClick(ActionEvent actionEvent) {
         Course SelectedCourse =  courseTable.getSelectionModel().getSelectedItem();
         if (SelectedCourse == null) {
-            warning("Törléshez előbb válasszon ki egy elemet!");
+            warning("Módosításhoz előbb válasszon ki egy elemet!");
             return;
         }
         try {
@@ -171,6 +187,32 @@ public class CourseController extends Controller{
                 error("Nem sikerült kapcsolódni a szerverhez");
             }
         }
+    }
+
+    @FXML
+    public void InsertUserClick(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("insert-users-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 640, 480);
+            Stage stage = new Stage();
+            stage.setTitle("Új felhasználó");
+            stage.setScene(scene);
+            stage.setOnCloseRequest(event -> {
+                try {
+                    loadUsersFromServer();
+                } catch (IOException e) {
+                    error("Nem sikerült kapcsolódni a szerverhez");
+                }
+            });
+            stage.show();
+        } catch (IOException e) {
+            error("Hiba történt az űrlap betöltése során", e.getMessage());
+        }
+    }
+
+    @FXML
+    public void deleteUserClick(ActionEvent actionEvent) {
+        System.out.println(userTable.getSelectionModel().getSelectedItem());
     }
 
 
