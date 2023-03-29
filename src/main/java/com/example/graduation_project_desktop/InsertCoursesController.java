@@ -41,10 +41,7 @@ public class InsertCoursesController extends Controller{
             warning("Leírás megadása kötelező");
             return;
         }
-        if (cphoto.isEmpty()) {
-            warning("Fotó link megadása kötelező");
-            return;
-        }
+
         if (subject.isEmpty()) {
             warning("Tantárgy megadása kötelező");
             return;

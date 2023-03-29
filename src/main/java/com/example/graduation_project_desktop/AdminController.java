@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Optional;
 
-public class CourseController extends Controller{
+public class AdminController extends Controller{
     @FXML
     private Button insertButton;
     @FXML
@@ -179,7 +179,7 @@ public class CourseController extends Controller{
         if (optionalButtonType.isPresent() &&
                 optionalButtonType.get().equals(ButtonType.OK)
         ) {
-            String url = App.Course_URL + "/" + SelectedCourse.getId();
+            String url = App.Delete_Course_Url + "/" + SelectedCourse.getId();
             try {
                 RequestHandler.delete(url);
                 loadCoursesFromServer();
@@ -212,7 +212,27 @@ public class CourseController extends Controller{
 
     @FXML
     public void deleteUserClick(ActionEvent actionEvent) {
-        System.out.println(userTable.getSelectionModel().getSelectedItem());
+        User SelectedUser =  userTable.getSelectionModel().getSelectedItem();
+        if (SelectedUser == null) {
+            warning("A törléshez előbb válasszon ki egy elemet!");
+            return;
+        }
+        Optional<ButtonType> optionalButtonType =
+                alert(Alert.AlertType.CONFIRMATION, "Biztos?",
+                        "Biztos, hogy törölni szeretné ezt a kurzust?: "
+                                + SelectedUser.getUsername(),
+                        "");
+        if (optionalButtonType.isPresent() &&
+                optionalButtonType.get().equals(ButtonType.OK)
+        ) {
+            String url = App.Delete_User_Url + "/" + SelectedUser.getId();
+            try {
+                RequestHandler.delete(url);
+                loadUsersFromServer();
+            } catch (IOException e) {
+                error("Nem sikerült kapcsolódni a szerverhez");
+            }
+        }
     }
 
 
