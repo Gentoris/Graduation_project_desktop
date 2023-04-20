@@ -15,16 +15,24 @@ public class Course {
     private String subject;
     @Expose
     private String topic;
+    @Expose
+    private String deadline;
+    @Expose
+    private String details;
+    @Expose
+    private String file_url;
 
 
-
-    public Course(int id, String name, String description, String cphoto, String subject, String topic) {
+    public Course(int id, String name, String description, String cphoto, String subject, String topic, String deadline, String details, String file_url) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.cphoto = cphoto;
         this.subject = subject;
         this.topic = topic;
+        this.deadline = deadline;
+        this.details = details;
+        this.file_url = file_url;
     }
 
     public int getId() {
@@ -47,6 +55,30 @@ public class Course {
 
     public String getTopic() {
         return topic;
+    }
+
+    public String getDeadline() {
+        return deadline;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public String getFile_url() {
+        return file_url;
+    }
+
+    public void setDeadline(String deadline) {
+        this.deadline = deadline;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public void setFile_url(String file_url) {
+        this.file_url = file_url;
     }
 
     public void setId(int id) {

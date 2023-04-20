@@ -93,6 +93,54 @@
         </VBox>
         <VBox alignment="TOP_CENTER">
             <children>
+                <Label text="Határidő">
+                    <VBox.margin>
+                        <Insets bottom="3.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="deadlineInput" maxWidth="300.0" prefWidth="100.0" />
+            </children>
+            <VBox.margin>
+                <Insets top="30.0" />
+            </VBox.margin>
+        </VBox>
+        <VBox alignment="TOP_CENTER">
+            <children>
+                <Label text="Részletek">
+                    <VBox.margin>
+                        <Insets bottom="3.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="detailsInput" maxWidth="300.0" prefWidth="100.0" />
+            </children>
+            <VBox.margin>
+                <Insets top="30.0" />
+            </VBox.margin>
+        </VBox>
+        <VBox alignment="TOP_CENTER">
+            <children>
+                <Label text="Fájl link">
+                    <VBox.margin>
+                        <Insets bottom="3.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="file_urlInput" maxWidth="300.0" prefWidth="100.0" />
+            </children>
+            <VBox.margin>
+                <Insets top="30.0" />
+            </VBox.margin>
+        </VBox>
+        <VBox alignment="TOP_CENTER">
+            <children>
                 <Button fx:id="UpdateCourseButton" mnemonicParsing="false" onAction="#UpdateClick" prefWidth="250.0" text="Módosítás" />
             </children>
             <VBox.margin>

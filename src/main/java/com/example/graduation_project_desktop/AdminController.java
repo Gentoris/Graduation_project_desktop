@@ -46,6 +46,12 @@ public class AdminController extends Controller{
     @FXML
     private TableColumn<Course, String> topicCol;
     @FXML
+    private TableColumn<Course, String> deadlineCol;
+    @FXML
+    private TableColumn<Course, String> detailsCol;
+    @FXML
+    private TableColumn<Course, String> file_urlCol;
+    @FXML
     private Button InsertUserButton;
     @FXML
     private Button deleteUserButton;
@@ -68,6 +74,9 @@ public class AdminController extends Controller{
         photoCol.setCellValueFactory(new PropertyValueFactory<>("cphoto"));
         subjectCol.setCellValueFactory(new PropertyValueFactory<>("subject"));
         topicCol.setCellValueFactory(new PropertyValueFactory<>("topic"));
+        deadlineCol.setCellValueFactory(new PropertyValueFactory<>("deadline"));
+        detailsCol.setCellValueFactory(new PropertyValueFactory<>("details"));
+        file_urlCol.setCellValueFactory(new PropertyValueFactory<>("file_url"));
         nameCol.setCellValueFactory(new PropertyValueFactory<>("username"));
         pwCol.setCellValueFactory(new PropertyValueFactory<>("password"));
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));

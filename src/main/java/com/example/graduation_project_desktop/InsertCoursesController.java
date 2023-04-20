@@ -20,7 +20,11 @@ public class InsertCoursesController extends Controller{
     @javafx.fxml.FXML
     private TextField topicInput;
     @javafx.fxml.FXML
-    private TextField dlInput;
+    private TextField deadlineInput;
+    @javafx.fxml.FXML
+    private TextField detailsInput;
+    @javafx.fxml.FXML
+    private TextField file_urlInput;
 
     @FXML
     private Button insertButton;
@@ -32,6 +36,9 @@ public class InsertCoursesController extends Controller{
         String cphoto = this.cphotoInput.getText();
         String subject = this.subjectInput.getText();
         String topic = this.topicInput.getText();
+        String deadline = this.deadlineInput.getText();
+        String details = this.detailsInput.getText();
+        String file_url = this.file_urlInput.getText();
 
         if (name.isEmpty()) {
             warning("Név megadása kötelező");
@@ -50,7 +57,19 @@ public class InsertCoursesController extends Controller{
             warning("Témakör megadása kötelező");
             return;
         }
-        Course course = new Course(0, name, description, cphoto, subject, topic);
+        if (deadline.isEmpty()) {
+            warning("Határidő megadása kötelező");
+            return;
+        }
+        if (details.isEmpty()) {
+            warning("Részletek megadása kötelező");
+            return;
+        }
+        if (file_url.isEmpty()) {
+            warning("Fájl link megadása kötelező");
+            return;
+        }
+        Course course = new Course(0, name, description, cphoto, subject, topic, deadline, details, file_url);
         Gson gson = new Gson();
         String json = gson.toJson(course);
         try {
@@ -61,6 +80,9 @@ public class InsertCoursesController extends Controller{
                 cphotoInput.setText("");
                 subjectInput.setText("");
                 topicInput.setText("");
+                deadlineInput.setText("");
+                detailsInput.setText("");
+                file_urlInput.setText("");
             }else{
                 error("Hiba történt a Hozzáadás során", response.getContent());
             }
@@ -68,4 +90,6 @@ public class InsertCoursesController extends Controller{
             error("Nem sikerült a szerverhez csatlakozni");
         }
     }
+
+
 }

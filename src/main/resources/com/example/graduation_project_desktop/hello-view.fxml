@@ -39,6 +39,9 @@
                             <TableColumn fx:id="photoCol" minWidth="50.0" prefWidth="110.0" text="Kép" />
                             <TableColumn fx:id="subjectCol" minWidth="40.0" prefWidth="78.0" text="Tantárgya" />
                             <TableColumn fx:id="topicCol" minWidth="40.0" prefWidth="78.0" text="Témája" />
+                            <TableColumn fx:id="deadlineCol" minWidth="40.0" prefWidth="78.0" text="Határidő" />
+                            <TableColumn fx:id="detailsCol" minWidth="40.0" prefWidth="78.0" text="Részletek" />
+                            <TableColumn fx:id="file_urlCol" minWidth="40.0" prefWidth="78.0" text="Fájl" />
 
                         </columns>
                     </TableView>

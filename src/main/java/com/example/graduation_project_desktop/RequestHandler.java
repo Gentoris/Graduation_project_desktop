@@ -27,6 +27,13 @@ public class RequestHandler {
         return getResponse(connection);
     }
 
+    public static Response patch(String url, String data) throws IOException {
+        HttpURLConnection connection = setupConnection(url);
+        connection.setRequestMethod("PATCH");
+        addRequestBody(connection, data);
+        return getResponse(connection);
+    }
+
     public static Response delete(String url) throws IOException {
         HttpURLConnection connection = setupConnection(url);
         connection.setRequestMethod("DELETE");
