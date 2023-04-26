@@ -2,6 +2,7 @@ package com.example.graduation_project_desktop;
 
 import com.google.gson.annotations.Expose;
 
+/**Ez az osztály felelős a felhasználók adatainak tárolásáért.*/
 public class User {
 
     private int id;

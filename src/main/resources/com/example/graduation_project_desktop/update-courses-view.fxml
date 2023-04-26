@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<!--A kurzusok módosítása gombra való kattintás utáni módosító felüleért felelős fxml.-->
 <VBox prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.graduation_project_desktop.UpdateCoursesController">
     <children>
         <VBox alignment="TOP_CENTER">

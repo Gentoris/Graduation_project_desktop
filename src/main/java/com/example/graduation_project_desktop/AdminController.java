@@ -14,6 +14,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Optional;
 
+/**
+ *Az AdminController feladata, hogy az alkalmazás betöltse az adatokat a szerverről, melyhez társul egy metódus is.
+ Ezenkívül felelős azért, hogy biztosítsa a szükséges metódusokat a gombok működéséhez.*/
+
+
 public class AdminController extends Controller{
     @FXML
     private Button insertButton;
@@ -66,6 +71,7 @@ public class AdminController extends Controller{
     @FXML
     private TabPane tabPane;
 
+    /**Adatok inicializálása*/
     @FXML
     private void initialize() {
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -82,8 +88,10 @@ public class AdminController extends Controller{
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
         pictureCol.setCellValueFactory(new PropertyValueFactory<>("profile_pic"));
 
-
         Platform.runLater(() -> {
+
+            /**Kurzusok adatainak betöltése a szerverről*/
+
             try {
                 System.out.println("Kurzus adatok betöltése");
                 loadCoursesFromServer();
@@ -92,6 +100,9 @@ public class AdminController extends Controller{
 
                 Platform.exit();
             }
+
+            /**Felhasználok adatainak betöltése a szerverről*/
+
             try {
                 loadUsersFromServer();
             } catch (IOException e) {
@@ -101,6 +112,8 @@ public class AdminController extends Controller{
             }
         });
     }
+    //
+    /**Kurzusok betöltésért felelős metódus*/
 
     private void loadCoursesFromServer() throws IOException {
         Response response = RequestHandler.get(App.Course_URL);
@@ -113,6 +126,7 @@ public class AdminController extends Controller{
         }
     }
 
+    /**Kurzusok adatainak betöltése a szerverről*/
     private void loadUsersFromServer() throws IOException {
         Response response = RequestHandler.get(App.User_URL);
         String content = response.getContent();
@@ -124,6 +138,8 @@ public class AdminController extends Controller{
         }
     }
 
+
+    /**Kurzus bevitel kattintásra*/
     @FXML
     public void insertCourseClick(ActionEvent actionEvent) {
         try {
@@ -145,6 +161,9 @@ public class AdminController extends Controller{
         }
     }
 
+
+    /**Kurzus módosítás metódus (Hibát nem találunk benne, a módosítások végrehajtása azonban nem történik meg, vagy
+     szerver hibát küld vissza. Ennek javítása folyamatban.)*/
     @FXML
     public void updateCourseClick(ActionEvent actionEvent) {
         Course SelectedCourse =  courseTable.getSelectionModel().getSelectedItem();
@@ -173,6 +192,8 @@ public class AdminController extends Controller{
         }
     }
 
+
+    /**Kurzus törlés kattintásra*/
     @FXML
     public void deleteCourseClick(ActionEvent actionEvent) {
         Course SelectedCourse =  courseTable.getSelectionModel().getSelectedItem();
@@ -198,6 +219,8 @@ public class AdminController extends Controller{
         }
     }
 
+
+    /**Felhasználó bevitel kattintásra*/
     @FXML
     public void InsertUserClick(ActionEvent actionEvent) {
         try {
@@ -219,6 +242,8 @@ public class AdminController extends Controller{
         }
     }
 
+
+    /**Felhasználó törlés kattintásra*/
     @FXML
     public void deleteUserClick(ActionEvent actionEvent) {
         User SelectedUser =  userTable.getSelectionModel().getSelectedItem();

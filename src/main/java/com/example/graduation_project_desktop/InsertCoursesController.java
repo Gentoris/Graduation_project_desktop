@@ -8,6 +8,10 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
+/**Ez az osztály felelős a kurzusok bevitelének működéséhez. Itt történnek validációk, hogy hiba üzenetet kapj pl
+üres beviteli mezőkért. A validációk szinkronban vannak a backenddel, így ha itt nincs is validáció megírva, a program
+ tudja a backendben megírt validációkat és ezt a program a hibaüzenetben közvetlen tudatja is a felhasználóval.*/
+
 public class InsertCoursesController extends Controller{
     @javafx.fxml.FXML
     private TextField nameInput;
@@ -29,6 +33,7 @@ public class InsertCoursesController extends Controller{
     @FXML
     private Button insertButton;
 
+    /**Validálás*/
     @FXML
     public void InsertCourseClick(ActionEvent actionEvent) {
         String name = this.nameInput.getText();
@@ -72,6 +77,8 @@ public class InsertCoursesController extends Controller{
         Course course = new Course(0, name, description, cphoto, subject, topic, deadline, details, file_url);
         Gson gson = new Gson();
         String json = gson.toJson(course);
+        /**Ha a bevitel sikeres, üressé teszi a mezőket további adatok betöltéséhez, és a program bezárása során
+        a felhasználó által beírt adatokkal,hozzáadja az új adatokat az adatbázishoz.*/
         try {
             Response response = RequestHandler.post(App.Insert_Course_URL, json);
             if(response.getResponseCode() == 201) {

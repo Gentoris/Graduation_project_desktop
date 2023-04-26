@@ -4,6 +4,9 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+
+/**Itt történnek a metódusok lekérései a backendről, amiknek URL-jét az App osztályban tárolunk.
+Ezek felelősek azért, hogy az adatok megjelenjenek a táblákban, illetve a gombok funkcióinak működésért.*/
 public class RequestHandler {
     private RequestHandler() {}
 

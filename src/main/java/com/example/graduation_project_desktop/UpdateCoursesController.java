@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
 
+/**Ez az osztály felelős a módosító gomb működéséért.*/
 public class UpdateCoursesController extends Controller{
     @FXML
     private TextField nameInput;
@@ -16,6 +17,7 @@ public class UpdateCoursesController extends Controller{
     private TextField cphotoInput;
     @FXML
     private TextField subjectInput;
+    
     @FXML
     private TextField topicInput;
     @FXML

@@ -8,6 +8,8 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
+
+/**Ugyanazokat a feladatokat látja el, mint az InsertCourseController osztály*/
 public class InsertUsersController extends Controller{
     @javafx.fxml.FXML
     private TextField usernameInput;

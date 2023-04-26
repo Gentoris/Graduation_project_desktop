@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<!--Ez a felhasználó beviteli gombra való kattintás utáni beviteli mezőért felelős fxml. -->
 <VBox prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.graduation_project_desktop.InsertUsersController">
     <children>
         <VBox alignment="TOP_CENTER">

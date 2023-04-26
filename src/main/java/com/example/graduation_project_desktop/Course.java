@@ -2,6 +2,7 @@ package com.example.graduation_project_desktop;
 
 import com.google.gson.annotations.Expose;
 
+/**A Course osztály felelős a kurzusok paramétereinek tárolásáért*/
 public class Course {
 
     private int id;
