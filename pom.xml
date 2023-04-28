@@ -53,6 +53,35 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>io.github.fvarrui</groupId>
+                <artifactId>javapackager</artifactId>
+                <version>1.7.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
+                        <configuration>
+                            <!-- mandatory -->
+                            <mainClass>com.example.graduation_project_desktop.Main</mainClass>
+                            <!-- optional -->
+                            <bundleJre>true</bundleJre>
+                            <!-- Ha nem működik első futtatásra akkor ez még kell, de a fájl méret nagyobb lesz -->
+
+                            <customizedJre>false</customizedJre>
+
+                            <generateInstaller>true</generateInstaller>
+                            <platform>windows</platform>
+                            <winConfig>
+                                <headerType>gui</headerType>
+                                <icoFile>src/main/resources/hu/petrik/konyvtarasztali/books.ico</icoFile>
+                            </winConfig>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.10.1</version>
